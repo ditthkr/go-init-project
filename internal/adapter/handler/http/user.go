@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/gofiber/fiber/v2"
 	"project/internal/adapter/errs"
-	"project/internal/core/port"
+	"project/internal/port"
 )
 
 type UserHandler struct {

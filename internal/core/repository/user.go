@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"project/internal/adapter/logs"
 	"project/internal/core/domain"
-	"project/internal/core/port"
+	"project/internal/port"
 	"time"
 )
 

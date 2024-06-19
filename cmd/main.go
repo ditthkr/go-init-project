@@ -7,7 +7,7 @@ import (
 	"project/internal/adapter/handler/http"
 	"project/internal/adapter/logs"
 	"project/internal/adapter/storage/postgres"
-	"project/internal/adapter/storage/postgres/repository"
+	"project/internal/core/repository"
 	"project/internal/core/service"
 )
 
