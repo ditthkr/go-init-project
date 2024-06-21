@@ -1,9 +1,7 @@
 package http
 
 import (
-	"errors"
 	"github.com/gofiber/fiber/v2"
-	"project/internal/adapter/errs"
 	"project/internal/port"
 )
 
@@ -23,15 +21,7 @@ func (r *UserHandler) CreateUser(c *fiber.Ctx) error {
 
 	user, err := r.svc.CreateUser(req)
 	if err != nil {
-		var isErr errs.Err
-		ok := errors.As(err, &isErr)
-		if ok {
-			return c.Status(isErr.Code).JSON(fiber.Map{"message": isErr.Message})
-		}
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"success": false,
-			"message": err.Error(),
-		})
+		return handleError(c, err)
 	}
-	return c.Status(fiber.StatusOK).JSON(user)
+	return handleSuccess(c, user)
 }
