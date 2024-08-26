@@ -3,6 +3,7 @@ package http
 import (
 	"github.com/gofiber/fiber/v2"
 	"project/internal/port"
+	"project/internal/port/dto"
 )
 
 type UserHandler struct {
@@ -14,7 +15,7 @@ func NewUserHandler(svc port.UserService) *UserHandler {
 }
 
 func (r *UserHandler) CreateUser(c *fiber.Ctx) error {
-	var req port.UserUserRequest
+	var req dto.UserUserRequest
 	if err := c.BodyParser(&req); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": err.Error()})
 	}

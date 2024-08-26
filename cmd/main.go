@@ -1,13 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"project/internal/adapter/config"
 	"project/internal/adapter/handler/http"
-	"project/internal/adapter/logs"
-	"project/internal/adapter/storage/postgres"
-	"project/internal/core/repository"
+	"project/internal/adapter/storage/pg"
+	"project/internal/adapter/storage/pg/repository"
 	"project/internal/core/service"
 )
 
@@ -16,9 +14,8 @@ func init() {
 }
 
 func main() {
-	db, err := postgres.New(config.GetPostgresConfig())
+	db, err := pg.New(config.GetPostgres())
 	if err != nil {
-		logs.Error(fmt.Sprintf("Failed to connect to database: %v", err))
 		panic(err)
 	}
 

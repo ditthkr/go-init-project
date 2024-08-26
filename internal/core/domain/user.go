@@ -3,12 +3,10 @@ package domain
 import "time"
 
 type User struct {
-	Id        uint64 `gorm:"primary_key;autoIncrement"`
-	Key       string `gorm:"unique;not null"`
-	Ip        string `gorm:"not null"`
-	Type      string `gorm:"not null;default:'PROXY_ONLY'"` // PROXY_ONLY,PROXY_SCB,SCB,
-	Status    bool   `gorm:"not null;default:true"`
-	ExpireAt  time.Time
+	Id        uint64 `gorm:"primaryKey;autoIncrement"`
+	Username  string `gorm:"unique"`
+	Password  string
+	Status    bool `gorm:"not null;default:true"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
